@@ -11,6 +11,9 @@ switch (comando) {
         break;
     case 'listar':
         let listado = porHacer.getListado();
+        if (listado === undefined || listado.length === 0)  {
+            return console.log('No hay tareas por hacer'.red);
+        }
         for (let tarea of listado) {
             console.log('=========Por Hacer========'.red);
             console.log(tarea.descripcion);
@@ -23,9 +26,8 @@ switch (comando) {
         console.log(actualizado);
         break;
     case 'borrar':
-        let borrado = porHacer.borrar(argv.descripcion);
-        console.log(borrado);
+        porHacer.borrar(argv.descripcion);
         break;
     default:
-        console.log('Comando no es reconocido');
+        console.log('Comando no es reconocido'.red);
 }

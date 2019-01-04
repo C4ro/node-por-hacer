@@ -1,4 +1,5 @@
 const fs = require('fs');
+const colors = require('colors');
 
 let listadoPorHacer = [];
 
@@ -26,7 +27,6 @@ const actualizar = (descripcion, completado = true) => {
     } else {
         return false;
     }
-
 }
 
 const borrar = (descripcion) => {
@@ -35,8 +35,10 @@ const borrar = (descripcion) => {
     if (index >= 0) {
         listadoPorHacer.splice(index, 1);
         guardarDB();
+        console.log(`"${ descripcion }" borrado exitosamente`.red);
         return true;
     } else {
+        console.log(`"${ descripcion }" no esta en la lista de tareas`.red);
         return false;
     }
 }
